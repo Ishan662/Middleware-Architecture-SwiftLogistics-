@@ -24,8 +24,8 @@ public class MessageListener {
     }
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE_CMS)
-    public void recieveMessage(String message){
-        logger.info("ecieved a new order from CMS queue: {}", message);
+    public void receiveMessage(String message){
+        logger.info("received a new order from CMS queue: {}", message);
 
         try{
             Order order = objectMapper.readValue(message, Order.class);
