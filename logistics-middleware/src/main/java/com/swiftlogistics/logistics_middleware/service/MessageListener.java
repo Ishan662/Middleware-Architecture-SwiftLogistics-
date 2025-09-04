@@ -5,15 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swiftlogistics.logistics_middleware.config.RabbitMQConfig;
 import com.swiftlogistics.logistics_middleware.model.Order;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.logging.Logger;
 
 @Service
 public class MessageListener {
-    private Static final Logger = LoggerFactory.getLogger(MessageListener.class);
+    private static final Logger logger = LoggerFactory.getLogger(MessageListener.class);
     private final MessageSender messageSender;
     private final ObjectMapper objectMapper;
 

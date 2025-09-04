@@ -1,18 +1,17 @@
 package com.swiftlogistics.logistics_middleware.model;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import java.util.List;
 
 public class Order {
     private String id;
-    private List<AbstractReadWriteAccess.Item> items;
+    private List<Item> items;
     private String status;
     private long timestamp;
 
     public Order() {
     }
-    public Order(String id, List<Item>, String status, long timestamp){
+    public Order(String id, List<Item> items, String status, long timestamp){
         this.id = id;
         this.items = items;
         this.status = status;

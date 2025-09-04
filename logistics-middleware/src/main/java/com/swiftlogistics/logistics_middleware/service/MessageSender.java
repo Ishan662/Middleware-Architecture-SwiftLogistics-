@@ -28,7 +28,7 @@ public class MessageSender {
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_MIDDLEWARE, RabbitMQConfig.ROUTING_KEY_CMS, jsonMessage);
     }
 
-    public void sendToWMS(Order order) throws JsonProcessingException{
+    public void sendToWms(Order order) throws JsonProcessingException{
         String jsonMessage = objectMapper.writeValueAsString(order);
         logger.info("Sending order to WMS queue: {}", jsonMessage);
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_MIDDLEWARE, RabbitMQConfig.ROUTING_KEY_WMS, jsonMessage);
