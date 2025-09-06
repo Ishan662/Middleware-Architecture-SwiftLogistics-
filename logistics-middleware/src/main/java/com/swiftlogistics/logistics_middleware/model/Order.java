@@ -1,90 +1,76 @@
 package com.swiftlogistics.logistics_middleware.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-import java.util.List;
-
+@Entity(name = "orders")
 public class Order {
-    private String id;
-    private List<Item> items;
-    private String status;
-    private long timestamp;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String clientName;
+    private String packageDetails;
+    private String deliveryAddress;
+    private String status; // e.g., SUBMITTED, PROCESSING, READY_FOR_PICKUP
 
     public Order() {
     }
-    public Order(String id, List<Item> items, String status, long timestamp){
+
+    public Order(Long id, String clientName, String packageDetails, String deliveryAddress, String status) {
         this.id = id;
-        this.items = items;
+        this.clientName = clientName;
+        this.packageDetails = packageDetails;
+        this.deliveryAddress = deliveryAddress;
         this.status = status;
-        this.timestamp = timestamp;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public List<Item> getItems() {
-        return items;
+
+    public String getClientName() {
+        return clientName;
     }
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
+
+    public String getPackageDetails() {
+        return packageDetails;
+    }
+    public void setPackageDetails(String packageDetails) {
+        this.packageDetails = packageDetails;
+    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
     public String getStatus() {
         return status;
     }
     public void setStatus(String status) {
         this.status = status;
     }
-    public long getTimestamp() {
-        return timestamp;
-    }
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Order{" +
-                "id='" + id + '\'' +
-                ", items=" + items +
+                "id=" + id +
+                ", clientName='" + clientName + '\'' +
+                ", packageDetails='" + packageDetails + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
                 ", status='" + status + '\'' +
-                ", timestamp=" + timestamp +
                 '}';
-
-    }
-
-    public static class Item {
-        private String sku;
-        private int quantity;
-
-        public Item(){
-
-        }
-        public Item(String sku, int quantity){
-            this.sku = sku;
-            this.quantity = quantity;
-        }
-
-        public String getSku() {
-            return sku;
-        }
-        public void setSku(String sku) {
-            this.sku = sku;
-        }
-        public int getQuantity() {
-            return quantity;
-        }
-        public void setQuantity(int quantity) {
-            this.quantity = quantity;
-        }
-
-        @Override
-        public String toString() {
-            return "Item{" +
-                    "sku='" + sku + '\'' +
-                    ", quantity=" + quantity +
-                    '}';
-        }
     }
 }
